@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import { mdiAccountCircleOutline, mdiChevronDown, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
+import { mdiAccountCircleOutline, mdiChevronDown, mdiTuneVariant, mdiViewDashboardOutline, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
 import { useWorkspace } from '@/composables/useWorkspace'
 import { useToast } from '@/composables/useToast'
 import { mix } from '@/lib/color'
@@ -45,8 +45,11 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
         <span class="org d-none d-md-inline"> · {{ state.config.brand.organization }}</span>
       </v-app-bar-title>
       <nav aria-label="Main" class="d-flex">
-        <v-btn :to="{ name: 'studio' }" variant="text" size="small" class="px-2">Studio</v-btn>
-        <v-btn :to="{ name: 'dashboard' }" variant="text" size="small" class="px-2">Dashboard</v-btn>
+        <!-- Phone: icon-only so the product name has room. -->
+        <v-btn :to="{ name: 'studio' }" :icon="mdiTuneVariant" class="d-sm-none" size="small" variant="text" aria-label="Studio" />
+        <v-btn :to="{ name: 'dashboard' }" :icon="mdiViewDashboardOutline" class="d-sm-none" size="small" variant="text" aria-label="Dashboard" />
+        <v-btn :to="{ name: 'studio' }" variant="text" size="small" class="px-2 d-none d-sm-flex">Studio</v-btn>
+        <v-btn :to="{ name: 'dashboard' }" variant="text" size="small" class="px-2 d-none d-sm-flex">Dashboard</v-btn>
       </nav>
       <v-menu>
         <template #activator="{ props }">

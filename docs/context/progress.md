@@ -10,4 +10,4 @@
 - [x] Verified in real Chrome (playwright-core, scratchpad only): 31 end-to-end checks pass covering US-1 to US-16 flows (toggle/reorder/width widgets, brand + contrast warning + invalid hex, stage limits and removal with deal reassignment, deal edit validation, reload persistence, export/import/reset, last-persona block, stage filter, deal drill-in, Advance stage, persona scope, not-found). No console errors.
 - [x] Responsive: no horizontal scroll at 360, 375, 768, 1440, 1920 px, light and dark, on dashboard, Studio, deal, not-found, empty state.
 - [x] Accessibility: axe-core (WCAG 2.1 AA) reports 0 violations on dashboard, Studio and deal page in light and dark.
-- [ ] Not yet done: keyboard-only walkthrough by a human; undo for stage changes (open question, leaning yes); phone app-bar title truncates ("Pulse S..."); README screenshots; deploy to Vercel (password protected); Phase 3 (Start, Present).
+- [ ] Not yet done: keyboard-only walkthrough by a human; undo for stage changes (open question, leaning yes); deploy to Vercel (password protected); Phase 3 (Start, Present).
