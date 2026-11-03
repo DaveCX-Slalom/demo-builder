@@ -1,0 +1,135 @@
+{
+  "config": {
+    "brand": {
+      "organization": "Harborview Community Bank",
+      "product": "Pulse Studio",
+      "logo": "",
+      "primary": "#0B3D6B",
+      "accent": "#12A59A"
+    },
+    "thresholds": {
+      "atRiskRatio": 0.8
+    },
+    "personas": [
+      {
+        "id": "p-director",
+        "name": "Priyanka Desai",
+        "title": "Regional Director, Commercial Banking",
+        "scope": "all",
+        "focus": "Are we on pace to hit this quarter's funding target, and what is blocking the deals that will get us there?",
+        "questions": [
+          "Are we on pace for the quarter?",
+          "Which deals are stuck?",
+          "What could block a close?",
+          "Which region needs help?"
+        ]
+      },
+      {
+        "id": "p-rm",
+        "name": "Tom Brandt",
+        "title": "Relationship Manager, Northeast",
+        "scope": "own",
+        "rmId": "rm-ne1",
+        "focus": "Which of my deals are late, and what do I do next?",
+        "questions": [
+          "Which of my deals are stuck?",
+          "What could block my closes?",
+          "Where is my pipeline sitting?"
+        ]
+      }
+    ],
+    "widgets": [
+      {
+        "id": "w-kpis",
+        "type": "kpis",
+        "enabled": true,
+        "span": "full",
+        "answers": "Are we on pace for the quarter?"
+      },
+      {
+        "id": "w-attention",
+        "type": "needsAttention",
+        "enabled": true,
+        "span": "wide",
+        "answers": "Which deals are stuck?"
+      },
+      {
+        "id": "w-exceptions",
+        "type": "exceptions",
+        "enabled": true,
+        "span": "narrow",
+        "answers": "What could block a close?"
+      },
+      {
+        "id": "w-stages",
+        "type": "pipelineByStage",
+        "enabled": true,
+        "span": "half",
+        "answers": "Where is the pipeline sitting?"
+      },
+      {
+        "id": "w-trend",
+        "type": "fundingTrend",
+        "enabled": true,
+        "span": "half",
+        "answers": "Is this a good quarter or a normal one?"
+      },
+      {
+        "id": "w-regions",
+        "type": "regionalPerformance",
+        "enabled": true,
+        "span": "full",
+        "answers": "Which region needs help?"
+      }
+    ],
+    "guidedSteps": [
+      {
+        "screen": "dashboard",
+        "caption": "Start with pace: forecast is close to target.",
+        "spotlight": "w-kpis"
+      },
+      {
+        "screen": "dashboard",
+        "caption": "Then what is stuck. Stalled deals come first.",
+        "spotlight": "w-attention"
+      },
+      {
+        "screen": "deal",
+        "caption": "Open a deal and advance it. The dashboard updates.",
+        "spotlight": "advance"
+      }
+    ]
+  },
+  "activity": [
+    {
+      "dealId": "D-1010",
+      "text": "Moved to Credit Review",
+      "at": "2026-10-09"
+    },
+    {
+      "dealId": "D-1010",
+      "text": "Appraisal ordered",
+      "at": "2026-10-02"
+    },
+    {
+      "dealId": "D-1011",
+      "text": "Moved to Proposal",
+      "at": "2026-10-15"
+    },
+    {
+      "dealId": "D-1012",
+      "text": "Moved to Discovery",
+      "at": "2026-10-03"
+    },
+    {
+      "dealId": "D-1014",
+      "text": "Moved to Proposal",
+      "at": "2026-10-20"
+    },
+    {
+      "dealId": "D-1009",
+      "text": "Funded",
+      "at": "2026-10-26"
+    }
+  ]
+}

@@ -1,0 +1,664 @@
+{
+  "meta": {
+    "bank": "Harborview Community Bank",
+    "division": "Commercial Banking",
+    "asOf": "2026-10-28",
+    "currency": "USD",
+    "quarter": "Q4 2026",
+    "quarterStart": "2026-10-01",
+    "quarterEnd": "2026-12-31",
+    "note": "Fictional data for a training case study. No real client or employer information."
+  },
+  "stages": [
+    {
+      "id": "prospect",
+      "name": "Prospect",
+      "probability": 0.1,
+      "slaDays": 14
+    },
+    {
+      "id": "discovery",
+      "name": "Discovery",
+      "probability": 0.25,
+      "slaDays": 21
+    },
+    {
+      "id": "credit-review",
+      "name": "Credit Review",
+      "probability": 0.5,
+      "slaDays": 14
+    },
+    {
+      "id": "proposal",
+      "name": "Proposal",
+      "probability": 0.75,
+      "slaDays": 10
+    },
+    {
+      "id": "funded",
+      "name": "Funded",
+      "probability": 1,
+      "slaDays": null
+    }
+  ],
+  "regions": [
+    "Northeast",
+    "Southeast",
+    "Midwest",
+    "West"
+  ],
+  "relationshipManagers": [
+    {
+      "id": "rm-ne1",
+      "name": "Tom Brandt",
+      "region": "Northeast",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 3200000
+    },
+    {
+      "id": "rm-ne2",
+      "name": "Elena Ruiz",
+      "region": "Northeast",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 3000000
+    },
+    {
+      "id": "rm-se1",
+      "name": "Marcus Bell",
+      "region": "Southeast",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2600000
+    },
+    {
+      "id": "rm-se2",
+      "name": "Jenna Park",
+      "region": "Southeast",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2800000
+    },
+    {
+      "id": "rm-mw1",
+      "name": "Sam Kowalski",
+      "region": "Midwest",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2900000
+    },
+    {
+      "id": "rm-mw2",
+      "name": "Aisha Rahman",
+      "region": "Midwest",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2700000
+    },
+    {
+      "id": "rm-w1",
+      "name": "Diego Alvarez",
+      "region": "West",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2800000
+    },
+    {
+      "id": "rm-w2",
+      "name": "Lila Nguyen",
+      "region": "West",
+      "title": "Relationship Manager",
+      "quarterlyFundingTarget": 2700000
+    }
+  ],
+  "clients": [
+    {
+      "id": "c1",
+      "name": "Ridgeway Logistics",
+      "industry": "Transportation",
+      "region": "Northeast",
+      "tier": "Tier 1",
+      "annualRevenue": 48000000,
+      "rmId": "rm-ne1"
+    },
+    {
+      "id": "c2",
+      "name": "Alder Medical Group",
+      "industry": "Healthcare",
+      "region": "Northeast",
+      "tier": "Tier 1",
+      "annualRevenue": 62000000,
+      "rmId": "rm-ne2"
+    },
+    {
+      "id": "c3",
+      "name": "Copperline Manufacturing",
+      "industry": "Manufacturing",
+      "region": "Midwest",
+      "tier": "Tier 1",
+      "annualRevenue": 95000000,
+      "rmId": "rm-mw1"
+    },
+    {
+      "id": "c4",
+      "name": "Lakeshore Foods",
+      "industry": "Food & Beverage",
+      "region": "Midwest",
+      "tier": "Tier 2",
+      "annualRevenue": 37000000,
+      "rmId": "rm-mw2"
+    },
+    {
+      "id": "c5",
+      "name": "Palmetto Hospitality",
+      "industry": "Hospitality",
+      "region": "Southeast",
+      "tier": "Tier 2",
+      "annualRevenue": 29000000,
+      "rmId": "rm-se1"
+    },
+    {
+      "id": "c6",
+      "name": "Bayou Energy Services",
+      "industry": "Energy",
+      "region": "Southeast",
+      "tier": "Tier 1",
+      "annualRevenue": 110000000,
+      "rmId": "rm-se2"
+    },
+    {
+      "id": "c7",
+      "name": "Sunvale Agriculture",
+      "industry": "Agriculture",
+      "region": "West",
+      "tier": "Tier 3",
+      "annualRevenue": 18000000,
+      "rmId": "rm-w1"
+    },
+    {
+      "id": "c8",
+      "name": "Cascade Software",
+      "industry": "Technology",
+      "region": "West",
+      "tier": "Tier 2",
+      "annualRevenue": 41000000,
+      "rmId": "rm-w2"
+    },
+    {
+      "id": "c9",
+      "name": "Granite Construction Partners",
+      "industry": "Construction",
+      "region": "Northeast",
+      "tier": "Tier 1",
+      "annualRevenue": 130000000,
+      "rmId": "rm-ne1"
+    },
+    {
+      "id": "c10",
+      "name": "Prairie Wholesale",
+      "industry": "Wholesale",
+      "region": "Midwest",
+      "tier": "Tier 2",
+      "annualRevenue": 56000000,
+      "rmId": "rm-mw1"
+    },
+    {
+      "id": "c11",
+      "name": "Magnolia Senior Living",
+      "industry": "Healthcare",
+      "region": "Southeast",
+      "tier": "Tier 2",
+      "annualRevenue": 33000000,
+      "rmId": "rm-se1"
+    },
+    {
+      "id": "c12",
+      "name": "Harbor Marine Supply",
+      "industry": "Distribution",
+      "region": "West",
+      "tier": "Tier 3",
+      "annualRevenue": 22000000,
+      "rmId": "rm-w2"
+    }
+  ],
+  "deals": [
+    {
+      "id": "D-1001",
+      "name": "Palmetto Working Capital Line",
+      "clientId": "c5",
+      "rmId": "rm-se1",
+      "region": "Southeast",
+      "product": "Line of Credit",
+      "amount": 180000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-08-21",
+      "expectedClose": "2026-10-05",
+      "fundedDate": "2026-10-05"
+    },
+    {
+      "id": "D-1002",
+      "name": "Lakeshore Packaging Equipment",
+      "clientId": "c4",
+      "rmId": "rm-mw2",
+      "region": "Midwest",
+      "product": "Equipment Finance",
+      "amount": 450000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-08-23",
+      "expectedClose": "2026-10-07",
+      "fundedDate": "2026-10-07"
+    },
+    {
+      "id": "D-1003",
+      "name": "Cascade Revolving Facility",
+      "clientId": "c8",
+      "rmId": "rm-w2",
+      "region": "West",
+      "product": "Line of Credit",
+      "amount": 620000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-08-25",
+      "expectedClose": "2026-10-09",
+      "fundedDate": "2026-10-09"
+    },
+    {
+      "id": "D-1004",
+      "name": "Alder Clinic Build-Out",
+      "clientId": "c2",
+      "rmId": "rm-ne2",
+      "region": "Northeast",
+      "product": "Term Loan",
+      "amount": 850000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-08-28",
+      "expectedClose": "2026-10-12",
+      "fundedDate": "2026-10-12"
+    },
+    {
+      "id": "D-1005",
+      "name": "Prairie Inventory Line",
+      "clientId": "c10",
+      "rmId": "rm-mw1",
+      "region": "Midwest",
+      "product": "Line of Credit",
+      "amount": 960000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-08-30",
+      "expectedClose": "2026-10-14",
+      "fundedDate": "2026-10-14"
+    },
+    {
+      "id": "D-1006",
+      "name": "Harbor Marine Dock Upgrade",
+      "clientId": "c12",
+      "rmId": "rm-w2",
+      "region": "West",
+      "product": "Term Loan",
+      "amount": 1050000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-09-01",
+      "expectedClose": "2026-10-16",
+      "fundedDate": "2026-10-16"
+    },
+    {
+      "id": "D-1007",
+      "name": "Bayou Pump Fleet Purchase",
+      "clientId": "c6",
+      "rmId": "rm-se2",
+      "region": "Southeast",
+      "product": "Equipment Finance",
+      "amount": 1280000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-09-05",
+      "expectedClose": "2026-10-20",
+      "fundedDate": "2026-10-20"
+    },
+    {
+      "id": "D-1008",
+      "name": "Magnolia Campus Refinance",
+      "clientId": "c11",
+      "rmId": "rm-se1",
+      "region": "Southeast",
+      "product": "CRE Loan",
+      "amount": 1550000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-09-07",
+      "expectedClose": "2026-10-22",
+      "fundedDate": "2026-10-22"
+    },
+    {
+      "id": "D-1009",
+      "name": "Copperline CNC Line Upgrade",
+      "clientId": "c3",
+      "rmId": "rm-mw1",
+      "region": "Midwest",
+      "product": "Equipment Finance",
+      "amount": 2200000,
+      "stage": "funded",
+      "daysInStage": 0,
+      "openedDate": "2026-09-11",
+      "expectedClose": "2026-10-26",
+      "fundedDate": "2026-10-26"
+    },
+    {
+      "id": "D-1010",
+      "name": "Granite Mixed-Use Development",
+      "clientId": "c9",
+      "rmId": "rm-ne1",
+      "region": "Northeast",
+      "product": "CRE Loan",
+      "amount": 8200000,
+      "stage": "credit-review",
+      "daysInStage": 19,
+      "openedDate": "2026-09-11",
+      "expectedClose": "2026-12-15",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1011",
+      "name": "Ridgeway Fleet Expansion",
+      "clientId": "c1",
+      "rmId": "rm-ne1",
+      "region": "Northeast",
+      "product": "Equipment Finance",
+      "amount": 1200000,
+      "stage": "proposal",
+      "daysInStage": 13,
+      "openedDate": "2026-09-05",
+      "expectedClose": "2026-12-05",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1012",
+      "name": "Copperline Plant Expansion",
+      "clientId": "c3",
+      "rmId": "rm-mw1",
+      "region": "Midwest",
+      "product": "Term Loan",
+      "amount": 2400000,
+      "stage": "discovery",
+      "daysInStage": 25,
+      "openedDate": "2026-09-17",
+      "expectedClose": "2027-01-29",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1013",
+      "name": "Sunvale Irrigation Line",
+      "clientId": "c7",
+      "rmId": "rm-w1",
+      "region": "West",
+      "product": "Line of Credit",
+      "amount": 600000,
+      "stage": "prospect",
+      "daysInStage": 16,
+      "openedDate": "2026-10-08",
+      "expectedClose": "2027-02-12",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1014",
+      "name": "Bayou Terminal Acquisition",
+      "clientId": "c6",
+      "rmId": "rm-se2",
+      "region": "Southeast",
+      "product": "Term Loan",
+      "amount": 5500000,
+      "stage": "proposal",
+      "daysInStage": 8,
+      "openedDate": "2026-09-10",
+      "expectedClose": "2026-11-30",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1015",
+      "name": "Lakeshore Distribution Center",
+      "clientId": "c4",
+      "rmId": "rm-mw2",
+      "region": "Midwest",
+      "product": "CRE Loan",
+      "amount": 4200000,
+      "stage": "credit-review",
+      "daysInStage": 6,
+      "openedDate": "2026-09-24",
+      "expectedClose": "2026-12-20",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1016",
+      "name": "Cascade Office Consolidation",
+      "clientId": "c8",
+      "rmId": "rm-w2",
+      "region": "West",
+      "product": "Term Loan",
+      "amount": 2800000,
+      "stage": "proposal",
+      "daysInStage": 4,
+      "openedDate": "2026-09-14",
+      "expectedClose": "2026-11-20",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1017",
+      "name": "Prairie Warehouse Automation",
+      "clientId": "c10",
+      "rmId": "rm-mw1",
+      "region": "Midwest",
+      "product": "Term Loan",
+      "amount": 3900000,
+      "stage": "discovery",
+      "daysInStage": 12,
+      "openedDate": "2026-09-30",
+      "expectedClose": "2027-02-15",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1018",
+      "name": "Harbor Marine Fleet Refinance",
+      "clientId": "c12",
+      "rmId": "rm-w2",
+      "region": "West",
+      "product": "Term Loan",
+      "amount": 2600000,
+      "stage": "discovery",
+      "daysInStage": 17,
+      "openedDate": "2026-09-25",
+      "expectedClose": "2027-01-31",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1019",
+      "name": "Alder Imaging Center",
+      "clientId": "c2",
+      "rmId": "rm-ne2",
+      "region": "Northeast",
+      "product": "Term Loan",
+      "amount": 3100000,
+      "stage": "prospect",
+      "daysInStage": 5,
+      "openedDate": "2026-10-19",
+      "expectedClose": "2027-03-10",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1020",
+      "name": "Magnolia Memory Care Wing",
+      "clientId": "c11",
+      "rmId": "rm-se1",
+      "region": "Southeast",
+      "product": "CRE Loan",
+      "amount": 2200000,
+      "stage": "prospect",
+      "daysInStage": 12,
+      "openedDate": "2026-10-12",
+      "expectedClose": "2027-02-28",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1021",
+      "name": "Palmetto Resort Renovation",
+      "clientId": "c5",
+      "rmId": "rm-se1",
+      "region": "Southeast",
+      "product": "Term Loan",
+      "amount": 2000000,
+      "stage": "discovery",
+      "daysInStage": 9,
+      "openedDate": "2026-10-03",
+      "expectedClose": "2027-01-20",
+      "fundedDate": null
+    },
+    {
+      "id": "D-1022",
+      "name": "Granite Equipment Fleet",
+      "clientId": "c9",
+      "rmId": "rm-ne1",
+      "region": "Northeast",
+      "product": "Equipment Finance",
+      "amount": 1750000,
+      "stage": "prospect",
+      "daysInStage": 3,
+      "openedDate": "2026-10-21",
+      "expectedClose": "2027-03-31",
+      "fundedDate": null
+    }
+  ],
+  "exceptions": [
+    {
+      "id": "E-01",
+      "dealId": "D-1010",
+      "type": "Appraisal pending",
+      "severity": "High",
+      "openedDate": "2026-10-02",
+      "note": "Third-party appraisal not yet received; blocks credit committee."
+    },
+    {
+      "id": "E-02",
+      "dealId": "D-1010",
+      "type": "Environmental report outstanding",
+      "severity": "High",
+      "openedDate": "2026-10-09",
+      "note": "Phase I report requested from sponsor; no date confirmed."
+    },
+    {
+      "id": "E-03",
+      "dealId": "D-1011",
+      "type": "Insurance certificate expired",
+      "severity": "Medium",
+      "openedDate": "2026-10-14",
+      "note": "Fleet insurance lapsed on 10-10; renewal certificate needed."
+    },
+    {
+      "id": "E-04",
+      "dealId": "D-1012",
+      "type": "Missing financials",
+      "severity": "Medium",
+      "openedDate": "2026-10-08",
+      "note": "FY2025 audited statements not provided."
+    },
+    {
+      "id": "E-05",
+      "dealId": "D-1014",
+      "type": "Covenant waiver request",
+      "severity": "High",
+      "openedDate": "2026-10-20",
+      "note": "Existing leverage covenant breached; waiver needed before close."
+    },
+    {
+      "id": "E-06",
+      "dealId": "D-1015",
+      "type": "Title issue",
+      "severity": "Medium",
+      "openedDate": "2026-10-22",
+      "note": "Lien search shows an unreleased easement on parcel 2."
+    },
+    {
+      "id": "E-07",
+      "dealId": "D-1016",
+      "type": "KYC refresh due",
+      "severity": "Low",
+      "openedDate": "2026-10-24",
+      "note": "Beneficial ownership certification due for renewal."
+    },
+    {
+      "id": "E-08",
+      "dealId": "D-1018",
+      "type": "Collateral documentation incomplete",
+      "severity": "Low",
+      "openedDate": "2026-10-17",
+      "note": "Vessel registration copies missing for two boats."
+    },
+    {
+      "id": "E-09",
+      "dealId": "D-1019",
+      "type": "Pricing exception approval",
+      "severity": "Medium",
+      "openedDate": "2026-10-26",
+      "note": "Requested 25 bps below grid; awaiting regional approval."
+    }
+  ],
+  "trend": [
+    {
+      "month": "2025-11",
+      "fundedVolume": 6100000,
+      "newPipeline": 11200000
+    },
+    {
+      "month": "2025-12",
+      "fundedVolume": 5800000,
+      "newPipeline": 9800000
+    },
+    {
+      "month": "2026-01",
+      "fundedVolume": 6400000,
+      "newPipeline": 12400000
+    },
+    {
+      "month": "2026-02",
+      "fundedVolume": 6900000,
+      "newPipeline": 13100000
+    },
+    {
+      "month": "2026-03",
+      "fundedVolume": 7600000,
+      "newPipeline": 14000000
+    },
+    {
+      "month": "2026-04",
+      "fundedVolume": 7200000,
+      "newPipeline": 13600000
+    },
+    {
+      "month": "2026-05",
+      "fundedVolume": 7900000,
+      "newPipeline": 14800000
+    },
+    {
+      "month": "2026-06",
+      "fundedVolume": 8300000,
+      "newPipeline": 15200000
+    },
+    {
+      "month": "2026-07",
+      "fundedVolume": 7100000,
+      "newPipeline": 13900000
+    },
+    {
+      "month": "2026-08",
+      "fundedVolume": 8600000,
+      "newPipeline": 15900000
+    },
+    {
+      "month": "2026-09",
+      "fundedVolume": 7800000,
+      "newPipeline": 14500000
+    },
+    {
+      "month": "2026-10",
+      "fundedVolume": 9140000,
+      "newPipeline": 12600000
+    }
+  ]
+}
