@@ -145,12 +145,18 @@ function create() {
   }
 
   // Studio: deals ----------------------------------------------------------
-  /** Validates, then saves. Region always follows the relationship manager. */
+  /** Validates, then saves. Region follows the relationship manager; the final stage implies funded. */
   function upsertDeal(deal: Deal): Result & { fields?: Record<string, string> } {
     const fields = validateDeal(deal, state)
     if (Object.keys(fields).length) return { ok: false, errors: Object.entries(fields).map(([k, m]) => `${k} ${m}`), fields }
     const rm = state.relationshipManagers.find(r => r.id === deal.rmId)!
-    const next: Deal = { ...deal, region: rm.region }
+    // Keep stage and funded date consistent: the final stage means funded, any other stage means open.
+    const funded = isTerminal(state.stages, deal.stage)
+    const next: Deal = {
+      ...deal, region: rm.region,
+      fundedDate: funded ? (deal.fundedDate ?? state.meta.asOf) : null,
+      daysInStage: funded ? 0 : deal.daysInStage,
+    }
     const i = state.deals.findIndex(d => d.id === deal.id)
     if (i >= 0) state.deals[i] = next
     else state.deals.push(next)

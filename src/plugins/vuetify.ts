@@ -16,7 +16,9 @@ export default createVuetify({
           background: '#F4F6F9',
           surface: '#FFFFFF',
           error: '#C62828',
-          warning: '#B26A00',
+          warning: '#955700', // BRIEF amber #B26A00 is 4.2:1 on white; darkened to pass 4.5:1 as text
+          'on-surface': '#14202E',
+          'on-background': '#14202E',
           success: '#2E7D32',
         },
       },

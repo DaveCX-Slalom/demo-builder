@@ -14,3 +14,7 @@ See SDD §17 (ADR-1 to ADR-7). Additions:
 - **Stage bars are buttons, not SVG,** so they are keyboard operable and `aria-pressed`. Trend chart is SVG with a text summary and a data-table alternative.
 - **"Behind pace" flag** on a region: funded share is under 75% of the share of the quarter already elapsed (Northeast: 14% vs about 30% elapsed).
 - **Stage filter** affects Needs attention only; KPIs are not narrowed by it.
+- **Amber darkened for text.** BRIEF amber `#B26A00` is 4.2:1 on white. Light-theme warning is `#955700` (5.8:1 on white, 4.9:1 on its tint). Red `#C62828` and green `#2E7D32` pass. Body text uses BRIEF `#14202E`.
+- **CommitField.** Studio inputs that validate (colours, stage numbers, names) keep a local draft and show the rule message; a field bound straight to the store would silently snap back on invalid input (found by browser test).
+- **Dark mode header** uses the dark surface colour, not the lightened brand colour, so white header text passes contrast.
+- **Verification tooling** (not in the repo): `playwright-core` driving the installed Chrome, plus `axe-core`, run from the scratchpad against `npm run preview`.

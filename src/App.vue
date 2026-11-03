@@ -3,11 +3,13 @@ import { computed, ref, watch } from 'vue'
 import { useTheme } from 'vuetify'
 import { mdiAccountCircleOutline, mdiChevronDown, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
 import { useWorkspace } from '@/composables/useWorkspace'
+import { useToast } from '@/composables/useToast'
 import { mix } from '@/lib/color'
 import { isHexColor } from '@/lib/validate'
 
 const { state, persona, selectPersona, notice, dismissNotice } = useWorkspace()
 const theme = useTheme()
+const { message: toastMessage, open: toastOpen } = useToast()
 
 // Brand colours from Studio override the theme at runtime. Dark mode uses lightened versions for contrast.
 watch(() => state.config.brand, b => {
@@ -36,7 +38,8 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
 
 <template>
   <v-app>
-    <v-app-bar flat color="primary" density="comfortable">
+    <v-app-bar flat :color="isDark ? 'surface' : 'primary'" :border="isDark" density="comfortable">
+      <img v-if="state.config.brand.logo" :src="state.config.brand.logo" alt="" class="logo" />
       <v-app-bar-title class="title">
         <span class="font-weight-bold">{{ state.config.brand.product }}</span>
         <span class="org d-none d-md-inline"> · {{ state.config.brand.organization }}</span>
@@ -68,6 +71,7 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
     <v-main>
       <RouterView />
     </v-main>
+    <v-snackbar v-model="toastOpen" timeout="4000" role="status">{{ toastMessage }}</v-snackbar>
     <v-snackbar v-model="noticeOpen" multi-line timeout="-1" color="warning" role="alert">
       {{ notice }}
       <template #actions><v-btn variant="text" @click="noticeOpen = false">Dismiss</v-btn></template>
@@ -81,4 +85,5 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
 .start-icon { margin-inline-end: 0; }
 @media (min-width: 600px) { .start-icon { margin-inline-end: 8px; } }
 .org { font-weight: 400; opacity: 0.9; }
+.logo { height: 28px; max-width: 120px; object-fit: contain; margin-inline-start: 16px; }
 </style>

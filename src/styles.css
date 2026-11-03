@@ -40,3 +40,9 @@ table.data .num, table.data th.num { text-align: right; }
   table.stack td.cell-main { display: block; text-align: left; }
   table.stack td.cell-main::before { content: none; }
 }
+
+/* Vuetify's default medium-emphasis (0.6) fails 4.5:1 for form labels and hints; raise it. */
+body .v-theme--light, body .v-theme--dark { --v-medium-emphasis-opacity: 0.78; }
+
+/* Resting field labels: Vuetify dims them below 4.5:1. Keep focus and error colours. */
+.v-field:not(.v-field--focused):not(.v-field--error) .v-label.v-field-label { opacity: 1; color: rgba(var(--v-theme-on-surface), 0.76); }
