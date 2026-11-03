@@ -18,3 +18,5 @@ See SDD §17 (ADR-1 to ADR-7). Additions:
 - **CommitField.** Studio inputs that validate (colours, stage numbers, names) keep a local draft and show the rule message; a field bound straight to the store would silently snap back on invalid input (found by browser test).
 - **Dark mode header** uses the dark surface colour, not the lightened brand colour, so white header text passes contrast.
 - **Verification tooling** (not in the repo): `playwright-core` driving the installed Chrome, plus `axe-core`, run from the scratchpad against `npm run preview`.
+- **Phase 3 built.** `/` is now the Start screen (was a redirect to Studio). Present mode state lives in `usePresentation`; `PresentBar` is mounted once in `App.vue` and drives navigation. Deal steps open the most urgent deal in the persona's scope. Going to Studio ends a tour. Toasts move to the top while presenting so they never cover the caption.
+- **Blank template** uses today's date for the as-of date and quarter, has one team member and one persona, three stages and no deals.

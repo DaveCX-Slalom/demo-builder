@@ -10,6 +10,7 @@ import StagesPanel from '@/components/studio/StagesPanel.vue'
 import WidgetsPanel from '@/components/studio/WidgetsPanel.vue'
 import DataPanel from '@/components/studio/DataPanel.vue'
 import SharePanel from '@/components/studio/SharePanel.vue'
+import WalkthroughPanel from '@/components/studio/WalkthroughPanel.vue'
 import { useWorkspace } from '@/composables/useWorkspace'
 import { useFilters } from '@/composables/useFilters'
 
@@ -28,6 +29,7 @@ const panels = [
   { title: 'Brand', hint: 'Names, logo and colours', comp: BrandPanel },
   { title: 'Stages and thresholds', hint: 'How deals progress', comp: StagesPanel },
   { title: 'Data', hint: 'The deals behind the numbers', comp: DataPanel },
+  { title: 'Walkthrough', hint: 'A scripted tour for Present mode', comp: WalkthroughPanel },
   { title: 'Share and reset', hint: 'Export, import, start again', comp: SharePanel },
 ]
 const onStage = (id: string) => (id === filters.value.stage ? clearStage() : toggleStage(id))

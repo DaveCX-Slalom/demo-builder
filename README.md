@@ -8,7 +8,11 @@ The reference build is a **commercial banking pipeline dashboard** for Harborvie
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
-## Two flows
+## Three ways in
+
+**Start (`/`):** choose the Commercial Banking template or a blank workspace.
+
+![Start](docs/screenshots/start.png)
 
 **Build (analyst, `/studio`):** settings panels on the left, live preview on the right. Every change shows up in the preview at once.
 
@@ -27,7 +31,12 @@ The reference build is a **commercial banking pipeline dashboard** for Harborvie
 | Brand | Organization and product name, logo, primary and accent colours (with contrast warnings) |
 | Stages and thresholds | Stage names, order, days allowed, win chance, and when a deal counts as at risk |
 | Data | Edit, add and remove deals; invalid values are blocked inline |
+| Walkthrough | A scripted tour for Present mode: screen, caption and highlight for each step |
 | Share and reset | Export or import the whole workspace as JSON; reset to the sample |
+
+**Present mode** runs the walkthrough full screen: it hides Studio, shows a bar with the caption and Back/Next (arrow keys work, Esc exits), opens each step's screen and highlights the widget being discussed.
+
+![Present mode](docs/screenshots/present.png)
 
 Everything on the dashboard is **derived from the data**, and the dashboard itself is **rendered from the configuration** through a widget registry. Nothing is hard-coded, so anything you see can be changed in Studio.
 
@@ -55,7 +64,7 @@ Vue 3 (`<script setup>`), Vite, TypeScript, Vue Router, Vuetify 3. Charts are sm
 
 ## Quality
 
-Checked in Chrome against the acceptance criteria for Phases 1 and 2: browser-driven flows for building and reading, no horizontal scroll from 360 to 1920 px, light and dark themes, and an automated WCAG 2.1 AA scan with no violations.
+Checked in Chrome against the acceptance criteria for Phases 1 to 3: browser-driven flows for building and reading, no horizontal scroll from 360 to 1920 px, light and dark themes, and an automated WCAG 2.1 AA scan with no violations.
 
 | Phone dashboard | Phone Studio | Dark mode |
 |---|---|---|

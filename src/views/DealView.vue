@@ -8,12 +8,14 @@ import StagePath from '@/components/deal/StagePath.vue'
 import ActivityTimeline from '@/components/deal/ActivityTimeline.vue'
 import ExceptionList from '@/components/dashboard/ExceptionList.vue'
 import { useWorkspace } from '@/composables/useWorkspace'
+import { usePresentation } from '@/composables/usePresentation'
 import { exceptionRowsFor, statusOf, weightedValue } from '@/lib/derive'
 import { dateShort, money, percent } from '@/lib/format'
 
 const props = defineProps<{ id: string }>()
 const route = useRoute()
 const { state, advanceStage } = useWorkspace()
+const { spotlight, presenting } = usePresentation()
 
 const deal = computed(() => state.deals.find(d => d.id === props.id))
 const stage = computed(() => state.stages.find(s => s.id === deal.value?.stage))
@@ -70,7 +72,7 @@ const facts = computed(() => deal.value ? [
           <dl class="facts">
             <template v-for="[k, v] in facts" :key="k"><dt>{{ k }}</dt><dd class="num">{{ v }}</dd></template>
           </dl>
-          <div class="mt-4">
+          <div class="mt-4 adv" :class="{ spot: spotlight === 'advance' }" data-spotlight="advance">
             <v-btn v-if="deal.fundedDate" disabled color="primary" :prepend-icon="mdiCheck">Funded on {{ dateShort(deal.fundedDate) }}</v-btn>
             <template v-else>
               <v-btn color="primary" size="large" @click="advance">Advance stage</v-btn>
@@ -95,7 +97,7 @@ const facts = computed(() => deal.value ? [
 
     <EmptyState v-else title="Deal not found" :body="`There is no deal with the id “${id}”.`" action-label="Back to dashboard" @action="$router.push(back)" />
 
-    <v-snackbar v-model="snack" timeout="3500" color="primary" role="status">{{ message }}</v-snackbar>
+    <v-snackbar v-model="snack" timeout="3500" color="primary" role="status" :location="presenting ? 'top' : 'bottom'">{{ message }}</v-snackbar>
   </v-container>
 </template>
 
@@ -104,6 +106,7 @@ const facts = computed(() => deal.value ? [
 .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 .stack-col { display: grid; gap: 16px; align-content: start; }
+.adv { display: inline-block; padding: 6px; margin-left: -6px; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0; }
 .facts dt { color: rgba(var(--v-theme-on-surface), 0.72); font-size: 0.875rem; }
 .facts dd { margin: 0; font-weight: 500; }

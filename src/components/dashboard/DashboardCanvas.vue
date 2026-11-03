@@ -2,12 +2,15 @@
 import { computed } from 'vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import { registry, type WidgetContext } from '@/lib/widgetRegistry'
+import { usePresentation } from '@/composables/usePresentation'
 import { exceptionRows, kpis as computeKpis, quarterProgress, regionRollup, scopeOf, stageSummary, trendSummary, type Filters } from '@/lib/derive'
 import type { Persona, WidgetConfig, WorkspaceState } from '@/types'
 
 /** Renders the dashboard from config through the registry. Used by Dashboard, Studio preview and (later) Present. */
 const props = defineProps<{ state: WorkspaceState; persona: Persona; filters: Filters }>()
 const emit = defineEmits<{ 'select-deal': [dealId: string]; 'toggle-stage': [stageId: string]; reset: [] }>()
+
+const { spotlight } = usePresentation()
 
 const ctx = computed<WidgetContext>(() => {
   const quarter = props.filters.quarter ?? props.state.meta.quarter
@@ -60,7 +63,7 @@ const titleId = (w: WidgetConfig) => `wt-${w.id}`
       />
       <div v-else class="grid">
         <section
-          v-for="w in widgets" :key="w.id" :class="['span-' + w.span, { widget: !registry[w.type].bare }]"
+          v-for="w in widgets" :key="w.id" :class="['span-' + w.span, { widget: !registry[w.type].bare, spot: spotlight === w.id }]"
           :data-widget-id="w.id" :aria-labelledby="titleId(w)"
         >
           <template v-if="registry[w.type].bare">

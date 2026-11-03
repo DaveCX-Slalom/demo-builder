@@ -150,10 +150,10 @@ Builder:
 |---|---|---|
 | **1. Dashboard from config** | Config-driven dashboard, filters, deal detail, advance stage, persona switch, responsive, empty states | Required |
 | **2. Studio** | Audience, brand, stages and thresholds, widgets, data editor, import and export, live preview | Required (this is the tool) |
-| **3. Start and Present** | Start screen with templates, walkthrough builder, Present mode | Optional |
+| **3. Start and Present** | Start screen with templates, walkthrough builder, Present mode | Optional. Built |
 | **4. AI-assisted setup** | Generate a first configuration from a description or process script | Design only, not built in this course |
 
-Phases 1 and 2 together are the submission. If Phase 3 is not built, the Start and Present screens and the walkthrough panel are removed from this BRIEF before submitting, so the BRIEF matches the build.
+Phases 1 and 2 together are the submission. Phase 3 is also built, so the Start and Present screens and the walkthrough panel described in this BRIEF match the build.
 
 ## 13. Nice to haves
 

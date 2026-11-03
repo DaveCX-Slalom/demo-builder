@@ -11,3 +11,9 @@
 - [x] Responsive: no horizontal scroll at 360, 375, 768, 1440, 1920 px, light and dark, on dashboard, Studio, deal, not-found, empty state.
 - [x] Accessibility: axe-core (WCAG 2.1 AA) reports 0 violations on dashboard, Studio and deal page in light and dark.
 - [ ] Not yet done: keyboard-only walkthrough by a human; undo for stage changes (open question, leaning yes); deploy to Vercel (password protected); Phase 3 (Start, Present).
+
+## Phase 3 (built)
+- [x] Start screen at `/` (Commercial Banking template, blank workspace, confirm before replacing saved work, "Continue" when work exists).
+- [x] Walkthrough panel in Studio (add, edit, reorder, remove steps; Present button) and Present mode (walkthrough bar, Back/Next/Exit, arrow keys and Esc, opens each step's screen, spotlight on a widget or the Advance button, reduced-motion safe).
+- [x] Verified in Chrome: 34 Phase 3 checks pass; the 31 Phase 1-2 checks and the overflow/axe sweeps still pass (Start added to the sweep). Found and fixed: a leftover toast covered the walkthrough caption.
+- [ ] Remaining: deploy to Vercel behind a password (needs your account); human keyboard pass; undo for stage changes (optional).

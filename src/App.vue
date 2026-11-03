@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import { mdiAccountCircleOutline, mdiChevronDown, mdiTuneVariant, mdiViewDashboardOutline, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
+import { mdiAccountCircleOutline, mdiChevronDown, mdiPresentation, mdiTuneVariant, mdiViewDashboardOutline, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
 import { useWorkspace } from '@/composables/useWorkspace'
 import { useToast } from '@/composables/useToast'
+import { usePresentation } from '@/composables/usePresentation'
+import PresentBar from '@/components/present/PresentBar.vue'
 import { mix } from '@/lib/color'
 import { isHexColor } from '@/lib/validate'
 
 const { state, persona, selectPersona, notice, dismissNotice } = useWorkspace()
 const theme = useTheme()
 const { message: toastMessage, open: toastOpen } = useToast()
+const { presenting, steps, start } = usePresentation()
 
 // Brand colours from Studio override the theme at runtime. Dark mode uses lightened versions for contrast.
 watch(() => state.config.brand, b => {
@@ -41,17 +44,27 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
     <v-app-bar flat :color="isDark ? 'surface' : 'primary'" :border="isDark" density="comfortable">
       <img v-if="state.config.brand.logo" :src="state.config.brand.logo" alt="" class="logo" />
       <v-app-bar-title class="title">
-        <span class="font-weight-bold">{{ state.config.brand.product }}</span>
-        <span class="org d-none d-md-inline"> · {{ state.config.brand.organization }}</span>
+        <RouterLink :to="{ name: 'start' }" class="brand-link" aria-label="Start screen">
+          <span class="font-weight-bold">{{ state.config.brand.product }}</span>
+          <span class="org d-none d-md-inline"> · {{ state.config.brand.organization }}</span>
+        </RouterLink>
       </v-app-bar-title>
-      <nav aria-label="Main" class="d-flex">
+      <nav v-if="!presenting" aria-label="Main" class="d-flex">
         <!-- Phone: icon-only so the product name has room. -->
         <v-btn :to="{ name: 'studio' }" :icon="mdiTuneVariant" class="d-sm-none" size="small" variant="text" aria-label="Studio" />
         <v-btn :to="{ name: 'dashboard' }" :icon="mdiViewDashboardOutline" class="d-sm-none" size="small" variant="text" aria-label="Dashboard" />
         <v-btn :to="{ name: 'studio' }" variant="text" size="small" class="px-2 d-none d-sm-flex">Studio</v-btn>
         <v-btn :to="{ name: 'dashboard' }" variant="text" size="small" class="px-2 d-none d-sm-flex">Dashboard</v-btn>
       </nav>
-      <v-menu>
+      <v-btn
+        v-if="!presenting" :disabled="!steps.length" variant="text" size="small" :prepend-icon="mdiPresentation" class="d-none d-sm-flex"
+        :title="steps.length ? 'Present the walkthrough' : 'Add walkthrough steps in Studio first'" @click="start"
+      >Present</v-btn>
+      <v-btn
+        v-if="!presenting" :disabled="!steps.length" :icon="mdiPresentation" variant="text" size="small" class="d-sm-none"
+        aria-label="Present the walkthrough" @click="start"
+      />
+      <v-menu v-if="!presenting">
         <template #activator="{ props }">
           <v-btn v-bind="props" variant="text" size="small" :aria-label="`Viewing as ${persona.name}. Change persona.`">
             <v-icon :icon="mdiAccountCircleOutline" class="start-icon" /><span class="d-none d-sm-inline persona-name">{{ persona.name }}</span>
@@ -73,9 +86,11 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
     </v-app-bar>
     <v-main>
       <RouterView />
+      <div v-if="presenting" class="present-space" aria-hidden="true" />
     </v-main>
-    <v-snackbar v-model="toastOpen" timeout="4000" role="status">{{ toastMessage }}</v-snackbar>
-    <v-snackbar v-model="noticeOpen" multi-line timeout="-1" color="warning" role="alert">
+    <PresentBar />
+    <v-snackbar v-model="toastOpen" timeout="4000" role="status" :location="presenting ? 'top' : 'bottom'">{{ toastMessage }}</v-snackbar>
+    <v-snackbar v-model="noticeOpen" :location="presenting ? 'top' : 'bottom'" multi-line timeout="-1" color="warning" role="alert">
       {{ notice }}
       <template #actions><v-btn variant="text" @click="noticeOpen = false">Dismiss</v-btn></template>
     </v-snackbar>
@@ -88,5 +103,8 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
 .start-icon { margin-inline-end: 0; }
 @media (min-width: 600px) { .start-icon { margin-inline-end: 8px; } }
 .org { font-weight: 400; opacity: 0.9; }
+.brand-link { color: inherit; text-decoration: none; }
+.brand-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 4px; }
+.present-space { height: 110px; }
 .logo { height: 28px; max-width: 120px; object-fit: contain; margin-inline-start: 16px; }
 </style>

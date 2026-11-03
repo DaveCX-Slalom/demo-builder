@@ -46,3 +46,7 @@ body .v-theme--light, body .v-theme--dark { --v-medium-emphasis-opacity: 0.78; }
 
 /* Resting field labels: Vuetify dims them below 4.5:1. Keep focus and error colours. */
 .v-field:not(.v-field--focused):not(.v-field--error) .v-label.v-field-label { opacity: 1; color: rgba(var(--v-theme-on-surface), 0.76); }
+
+/* Present-mode spotlight. The outline and halo are static; only the pulse animates (and is removed under reduced motion). */
+.spot { outline: 3px solid rgb(var(--v-theme-secondary)); outline-offset: 4px; border-radius: 12px; box-shadow: 0 0 0 10px rgba(var(--v-theme-secondary), 0.2); animation: spot-pulse 2s ease-in-out infinite; }
+@keyframes spot-pulse { 50% { box-shadow: 0 0 0 14px rgba(var(--v-theme-secondary), 0.08); } }

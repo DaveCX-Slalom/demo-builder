@@ -2,7 +2,8 @@ import { computed, reactive, ref, watch } from 'vue'
 import { sampleWorkspace } from '@/data'
 import { validateDeal, validateWorkspace } from '@/lib/validate'
 import { isTerminal } from '@/lib/derive'
-import type { Deal, Persona, Stage, WidgetConfig, WorkspaceConfig, WorkspaceState } from '@/types'
+import { templates } from '@/data/templates'
+import type { Deal, GuidedStep, Persona, Stage, WidgetConfig, WorkspaceConfig, WorkspaceState } from '@/types'
 
 const KEY = 'pulse-studio.v1'
 const PERSONA_KEY = 'pulse-studio.persona'
@@ -184,6 +185,34 @@ function create() {
   }
   function resetToSample() { replaceState(sampleWorkspace()); activePersonaId.value = '' }
   function dismissNotice() { notice.value = null }
+  function loadTemplate(id: string): boolean {
+    const t = templates.find(x => x.id === id)
+    if (!t) return false
+    replaceState(t.build())
+    activePersonaId.value = ''
+    return true
+  }
+  /** True once the user has saved a workspace in this browser. */
+  function hasSavedWork(): boolean { return readStorage(KEY) !== null }
+
+  // Studio: walkthrough steps (Phase 3) -------------------------------------
+  function addStep(): GuidedStep {
+    const step: GuidedStep = { screen: 'dashboard', caption: 'New step', spotlight: state.config.widgets[0]?.id ?? '' }
+    state.config.guidedSteps.push(step)
+    return step
+  }
+  /** Changing the screen resets the spotlight to something that exists on that screen. */
+  function updateStep(i: number, patch: Partial<GuidedStep>) {
+    const step = state.config.guidedSteps[i]
+    if (!step) return
+    const before = step.screen
+    Object.assign(step, patch)
+    if (patch.screen && patch.screen !== before) {
+      step.spotlight = patch.screen === 'deal' ? 'advance' : (state.config.widgets[0]?.id ?? '')
+    }
+  }
+  function moveStep(i: number, dir: -1 | 1) { swap(state.config.guidedSteps, i, i + dir) }
+  function removeStep(i: number) { state.config.guidedSteps.splice(i, 1) }
 
   return {
     state, persona, notice, selectPersona,
@@ -191,7 +220,8 @@ function create() {
     setBrand, setThreshold, upsertPersona, removePersona,
     upsertStage, moveStage, removeStage, setWidget, moveWidget,
     upsertDeal, removeDeal, newDealId,
-    exportJson, importJson, resetToSample, dismissNotice,
+    exportJson, importJson, resetToSample, dismissNotice, loadTemplate, hasSavedWork,
+    addStep, updateStep, moveStep, removeStep,
   }
 }
 

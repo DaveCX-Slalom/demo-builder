@@ -65,6 +65,10 @@ export function validateWorkspace(input: unknown): string[] {
     if (!WIDGET_SPANS.includes(w.span)) errors.push(`Widget ${w.id}: unknown width "${w.span}".`)
   }
   if (!Array.isArray(c.guidedSteps)) errors.push('"config.guidedSteps" must be a list.')
+  else c.guidedSteps.forEach((g, i) => {
+    if (g.screen !== 'dashboard' && g.screen !== 'deal') errors.push(`Walkthrough step ${i + 1}: screen must be "dashboard" or "deal".`)
+    if (typeof g.caption !== 'string') errors.push(`Walkthrough step ${i + 1}: caption is missing.`)
+  })
   return errors
 }
 
