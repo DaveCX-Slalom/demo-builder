@@ -23,7 +23,7 @@ const open = computed(() => state.deals.filter(d => !d.fundedDate))
 
 <style scoped>
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 16px; }
-.stats div { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 8px; padding: 8px 12px; }
+.stats div { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 4px; padding: 8px 12px; }
 dt { font-size: 0.75rem; color: rgba(var(--v-theme-on-surface), 0.72); }
 dd { margin: 0; font-size: 1.25rem; font-weight: 700; }
 </style>

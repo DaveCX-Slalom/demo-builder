@@ -1,4 +1,6 @@
-:root { font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+:root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+/* Lightning buttons use sentence case, not capitals. */
+.v-btn { text-transform: none; letter-spacing: normal; font-weight: 600; }
 body { margin: 0; }
 .num, .v-table td.num { font-variant-numeric: tabular-nums; }
 @media (prefers-reduced-motion: reduce) {
@@ -15,7 +17,7 @@ body { margin: 0; }
 .widget { container-type: inline-size; container-name: widget; }
 
 .plain-btn {
-  all: unset; cursor: pointer; box-sizing: border-box; border-radius: 6px;
+  all: unset; cursor: pointer; box-sizing: border-box; border-radius: 4px;
 }
 .plain-btn:focus-visible { outline: 2px solid rgb(var(--v-theme-secondary)); outline-offset: 2px; }
 .link-btn { all: unset; cursor: pointer; font-weight: 600; color: rgb(var(--v-theme-primary)); border-radius: 4px; }
@@ -48,5 +50,5 @@ body .v-theme--light, body .v-theme--dark { --v-medium-emphasis-opacity: 0.78; }
 .v-field:not(.v-field--focused):not(.v-field--error) .v-label.v-field-label { opacity: 1; color: rgba(var(--v-theme-on-surface), 0.76); }
 
 /* Present-mode spotlight. The outline and halo are static; only the pulse animates (and is removed under reduced motion). */
-.spot { outline: 3px solid rgb(var(--v-theme-secondary)); outline-offset: 4px; border-radius: 12px; box-shadow: 0 0 0 10px rgba(var(--v-theme-secondary), 0.2); animation: spot-pulse 2s ease-in-out infinite; }
+.spot { outline: 3px solid rgb(var(--v-theme-secondary)); outline-offset: 4px; border-radius: 4px; box-shadow: 0 0 0 10px rgba(var(--v-theme-secondary), 0.2); animation: spot-pulse 2s ease-in-out infinite; }
 @keyframes spot-pulse { 50% { box-shadow: 0 0 0 14px rgba(var(--v-theme-secondary), 0.08); } }

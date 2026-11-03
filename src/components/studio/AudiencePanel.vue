@@ -60,6 +60,6 @@ function remove(p: Persona) {
 
 <style scoped>
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 8px; padding: 12px; }
+li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 4px; padding: 12px; }
 .top { display: grid; grid-template-columns: 1fr auto; gap: 4px; align-items: start; }
 </style>

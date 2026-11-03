@@ -39,8 +39,8 @@ const max = computed(() => Math.max(1, ...props.rows.map(r => r.value)))
 .row:hover { background: rgba(var(--v-theme-on-surface), 0.04); }
 .row.on { border-color: rgb(var(--v-theme-secondary)); background: rgba(var(--v-theme-secondary), 0.08); }
 .name { grid-area: name; font-weight: 600; font-size: 0.875rem; }
-.track { grid-area: track; height: 14px; border-radius: 7px; background: rgba(var(--v-theme-on-surface), 0.08); overflow: hidden; }
-.fill { display: block; height: 100%; border-radius: 7px; background: rgb(var(--v-theme-primary)); }
+.track { grid-area: track; height: 14px; border-radius: 4px; background: rgba(var(--v-theme-on-surface), 0.08); overflow: hidden; }
+.fill { display: block; height: 100%; border-radius: 4px; background: rgb(var(--v-theme-primary)); }
 .val { grid-area: val; font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
 .warn { grid-area: warn; font-size: 0.8125rem; font-weight: 600; display: flex; align-items: center; gap: 4px; }
 </style>

@@ -43,6 +43,6 @@ function present() { if (!start()) toast('Add at least one step first.') }
 
 <style scoped>
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 8px; padding: 12px; }
+li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 4px; padding: 12px; }
 .top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 </style>

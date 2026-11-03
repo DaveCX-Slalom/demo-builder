@@ -17,3 +17,8 @@
 - [x] Walkthrough panel in Studio (add, edit, reorder, remove steps; Present button) and Present mode (walkthrough bar, Back/Next/Exit, arrow keys and Esc, opens each step's screen, spotlight on a widget or the Advance button, reduced-motion safe).
 - [x] Verified in Chrome: 34 Phase 3 checks pass; the 31 Phase 1-2 checks and the overflow/axe sweeps still pass (Start added to the sweep). Found and fixed: a leftover toast covered the walkthrough caption.
 - [ ] Remaining: deploy to Vercel behind a password (needs your account); human keyboard pass; undo for stage changes (optional).
+
+## Lightning-inspired restyle (branch salesforce-style)
+- [x] Palette, 4px radius, system fonts, sentence-case buttons, light global header with app tile and active-tab underline, chevron Path and record header on the deal page, studio and stage-bar radii. Screenshots in `docs/screenshots/` regenerated.
+- [x] Verified locally on the production build: 31 builder/reader checks, 34 Phase 3 checks, overflow sweep (2 themes x 5 widths) and axe (0 violations, light and dark, including the deal page). Brand-colour checks now read the app tile instead of the header background.
+- [ ] Merge to main and redeploy to the Vercel link; re-run the checks against the live URL.

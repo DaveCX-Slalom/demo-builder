@@ -78,7 +78,7 @@ const onStage = (id: string) => (id === filters.value.stage ? clearStage() : tog
 .panels { padding: 12px 16px; }
 .preview { padding: 0 16px 16px; }
 .bar { display: flex; align-items: center; gap: 8px; padding: 8px 0; flex-wrap: wrap; }
-.canvas-wrap { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 8px; padding: 16px; background: rgb(var(--v-theme-background)); }
+.canvas-wrap { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 4px; padding: 16px; background: rgb(var(--v-theme-background)); }
 @media (min-width: 960px) {
   .studio { display: grid; grid-template-columns: 380px minmax(0, 1fr); height: calc(100dvh - var(--v-layout-top, 56px)); }
   .panels, .preview { overflow-y: auto; height: 100%; }

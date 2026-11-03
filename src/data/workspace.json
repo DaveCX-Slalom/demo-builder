@@ -4,8 +4,8 @@
       "organization": "Harborview Community Bank",
       "product": "Pulse Studio",
       "logo": "",
-      "primary": "#0B3D6B",
-      "accent": "#12A59A"
+      "primary": "#0B5CAB",
+      "accent": "#0176D3"
     },
     "thresholds": {
       "atRiskRatio": 0.8

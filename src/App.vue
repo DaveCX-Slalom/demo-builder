@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useTheme } from 'vuetify'
-import { mdiAccountCircleOutline, mdiChevronDown, mdiPresentation, mdiTuneVariant, mdiViewDashboardOutline, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
+import { mdiAccountCircleOutline, mdiChartBoxOutline, mdiChevronDown, mdiPresentation, mdiTuneVariant, mdiViewDashboardOutline, mdiWeatherNight, mdiWhiteBalanceSunny } from '@mdi/js'
 import { useWorkspace } from '@/composables/useWorkspace'
 import { useToast } from '@/composables/useToast'
 import { usePresentation } from '@/composables/usePresentation'
@@ -41,8 +41,9 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
 
 <template>
   <v-app>
-    <v-app-bar flat :color="isDark ? 'surface' : 'primary'" :border="isDark" density="comfortable">
+    <v-app-bar flat color="surface" border density="comfortable" class="global-header">
       <img v-if="state.config.brand.logo" :src="state.config.brand.logo" alt="" class="logo" />
+      <span v-else class="app-tile" aria-hidden="true"><v-icon :icon="mdiChartBoxOutline" size="20" /></span>
       <v-app-bar-title class="title">
         <RouterLink :to="{ name: 'start' }" class="brand-link" aria-label="Start screen">
           <span class="font-weight-bold">{{ state.config.brand.product }}</span>
@@ -106,5 +107,12 @@ watch(noticeOpen, o => { if (!o) dismissNotice() })
 .brand-link { color: inherit; text-decoration: none; }
 .brand-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; border-radius: 4px; }
 .present-space { height: 110px; }
+.app-tile { display: grid; place-items: center; width: 32px; height: 32px; margin-inline-start: 16px; border-radius: 4px; background: rgb(var(--v-theme-primary)); color: rgb(var(--v-theme-on-primary)); flex: none; }
+/* Active tab: Lightning marks the current nav item with a blue underline. */
+/* Phone: drop the tile so the product name has room. */
+@media (max-width: 599px) { .app-tile { display: none; } }
+.global-header nav .v-btn { border-radius: 0; height: 100% !important; border-bottom: 3px solid transparent; }
+.global-header nav .v-btn.v-btn--active { border-bottom-color: rgb(var(--v-theme-secondary)); }
+.global-header nav .v-btn.v-btn--active :deep(.v-btn__overlay) { opacity: 0; }
 .logo { height: 28px; max-width: 120px; object-fit: contain; margin-inline-start: 16px; }
 </style>

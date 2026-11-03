@@ -37,7 +37,7 @@ const spans = (type: keyof typeof registry) => registry[type].spans.map(v => ({ 
 
 <style scoped>
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 8px; padding: 4px 12px 12px; }
+li { border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity)); border-radius: 4px; padding: 4px 12px 12px; }
 li.off { background: rgba(var(--v-theme-on-surface), 0.04); }
 .top { display: flex; align-items: center; justify-content: space-between; }
 .moves { display: flex; }

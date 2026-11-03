@@ -64,7 +64,7 @@ Calm, trustworthy, data-forward. Two surfaces with different jobs:
 - **Preview beside the controls.** The analyst never edits blind; every setting change shows up in the preview at once.
 - **The dashboard is rendered from configuration.** The reference dashboard is not hard-coded. It is the output of the same config the analyst edits. This keeps the tool honest: anything the dashboard shows can be changed in Studio.
 - **Status is never color alone.** Every status uses icon, label, and color (On track, At risk, Stalled).
-- **Navy and teal.** Navy for structure and trust, teal as the single accent. Red and amber are for risk only. Brand colors are editable in Studio.
+- **Lightning-inspired look.** A light global header with an app tile and underlined active tab, flat bordered cards on a grey page, 4px radius, sentence-case buttons, and a chevron Path for deal stages (green complete, blue current, grey upcoming). Brand blue is the single accent. Red and amber are for risk only. Brand colors are editable in Studio. This follows the Salesforce Lightning Design System in spirit only: no Salesforce logo, name or assets.
 - **Numbers are the hero.** Large tabular figures. Currency abbreviated ($40.5M) on the dashboard and shown in full on the deal page.
 - **Medium density.** Readable in a meeting room.
 - **Plain-language setup.** Studio labels describe the outcome ("Mark a deal as stalled after") and avoid system terms.
@@ -135,14 +135,14 @@ Builder:
 
 | Token | Value |
 |---|---|
-| Navy (primary) | `#0B3D6B` |
-| Teal (accent) | `#12A59A` |
-| Surface | `#FFFFFF` on a `#F4F6F9` page |
-| Text | `#14202E` primary, `#4A5A6B` secondary |
-| Risk | red `#C62828`, amber `#B26A00` |
-| Positive | green `#2E7D32` |
-| Typeface | Inter or system sans, tabular numbers for all figures |
-| Radius and spacing | 8px radius, 8px grid |
+| Blue (primary, link text) | `#0B5CAB` |
+| Brand blue (accent, fills, focus) | `#0176D3` |
+| Surface | `#FFFFFF` on a `#F3F3F3` page |
+| Text | `#181818` primary |
+| Risk | red `#BA0517`, amber `#955700` (darkened from `#B26A00` for text contrast) |
+| Positive | green `#2E844A` |
+| Typeface | System sans (Segoe UI, Roboto, San Francisco), tabular numbers for all figures |
+| Radius and spacing | 4px radius, 8px grid |
 
 ## 12. Build phases
 

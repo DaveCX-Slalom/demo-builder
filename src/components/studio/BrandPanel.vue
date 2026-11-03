@@ -11,7 +11,7 @@ const brand = computed(() => state.config.brand)
 
 const hex = (v: string) => (v.startsWith('#') ? v : `#${v}`).toUpperCase()
 const required = (v: string) => !!v?.trim() || 'Required'
-const hexRule = (v: string) => isHexColor(hex(v)) || 'Use a hex colour like #0B3D6B'
+const hexRule = (v: string) => isHexColor(hex(v)) || 'Use a hex colour like #0B5CAB'
 
 // Primary carries white text (app bar) and is used as link text on white; accent is only used for fills and highlights.
 const primaryRatio = computed(() => isHexColor(brand.value.primary) ? contrastRatio(brand.value.primary, '#FFFFFF') : 21)

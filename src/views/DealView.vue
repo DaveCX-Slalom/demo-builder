@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { mdiArrowLeft, mdiCheck } from '@mdi/js'
+import { mdiArrowLeft, mdiCheck, mdiCurrencyUsd } from '@mdi/js'
 import StatusChip from '@/components/common/StatusChip.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import StagePath from '@/components/deal/StagePath.vue'
@@ -57,14 +57,18 @@ const facts = computed(() => deal.value ? [
     <template v-if="deal">
       <v-btn :to="back" variant="text" :prepend-icon="mdiArrowLeft" class="mb-2 ml-n3">Back to dashboard</v-btn>
       <header class="head">
-        <div>
-          <h1 class="text-h5 mb-1">{{ deal.name }}</h1>
-          <p class="text-body-2 text-medium-emphasis mb-0">{{ deal.id }} · {{ client?.name }}</p>
+        <div class="d-flex ga-3 align-center">
+          <span class="record-tile" aria-hidden="true"><v-icon :icon="mdiCurrencyUsd" size="24" /></span>
+          <div>
+            <p class="eyebrow mb-0">Deal</p>
+            <h1 class="text-h5 mb-1">{{ deal.name }}</h1>
+            <p class="text-body-2 text-medium-emphasis mb-0">{{ deal.id }} · {{ client?.name }}</p>
+          </div>
         </div>
         <StatusChip :status="status" />
       </header>
 
-      <v-card variant="flat" border class="pa-4 mb-4"><StagePath :stages="state.stages" :current="deal.stage" /></v-card>
+      <v-card variant="flat" border class="pa-3 mb-4"><StagePath :stages="state.stages" :current="deal.stage" /></v-card>
 
       <div class="cols">
         <v-card variant="flat" border class="pa-4">
@@ -103,6 +107,8 @@ const facts = computed(() => deal.value ? [
 
 <style scoped>
 .page { max-width: 1100px; padding: 16px; }
+.record-tile { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 4px; flex: none; background: rgb(var(--v-theme-success)); color: rgb(var(--v-theme-on-success)); }
+.eyebrow { font-size: 0.75rem; color: rgba(var(--v-theme-on-surface), 0.76); }
 .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
 .stack-col { display: grid; gap: 16px; align-content: start; }

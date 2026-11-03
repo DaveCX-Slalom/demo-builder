@@ -27,7 +27,7 @@ function blankWorkspace(): WorkspaceState {
     deals: [], exceptions: [], activity: [],
     trend: Array.from({ length: 12 }, (_, i) => ({ month: month(11 - i), fundedVolume: 0, newPipeline: 0 })),
     config: {
-      brand: { organization: 'Your organization', product: 'Pulse Studio', logo: '', primary: '#0B3D6B', accent: '#12A59A' },
+      brand: { organization: 'Your organization', product: 'Pulse Studio', logo: '', primary: '#0B5CAB', accent: '#0176D3' },
       thresholds: { atRiskRatio: 0.8 },
       personas: [{ id: 'p-viewer', name: 'Dashboard viewer', title: 'Who is this for?', scope: 'all', focus: 'What does this person need to know first?', questions: [] }],
       widgets: [
