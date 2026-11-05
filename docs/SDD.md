@@ -29,7 +29,7 @@ Pulse Studio is a client-side single-page app with two surfaces over one store: 
 | UI | Vuetify 3 | Consistent, accessible components |
 | State | Composable with `reactive` and `localStorage` | Small app; no Pinia (ADR-1) |
 | Charts | Custom SVG and CSS components | Few chart types, no dependency (ADR-2) |
-| Hosting | Vercel, training only, password protected | Course requirement |
+| Hosting | Vercel, training only | Public by owner decision; all data is invented |
 
 ## 3. Project structure
 
@@ -67,7 +67,7 @@ pulse-studio/
 
 | Path | View | Notes |
 |---|---|---|
-| `/` | StartView | Phase 3. Until then redirects to `/studio` |
+| `/` | StartView | Phase 3 (built). Choose a template or continue |
 | `/studio` | StudioView | Panels left, live preview right |
 | `/dashboard` | DashboardView | Full-width output; Present mode lives here |
 | `/deals/:id` | DealView | Not-found state for unknown ids |
@@ -252,12 +252,12 @@ The course scaffold excludes a test runner, so verification is a manual checklis
 3. Studio round trip: change brand, a stage, a widget, and a deal; preview and dashboard both reflect it; reload keeps it; reset restores the sample.
 4. Screens checked at 375, 768, and 1440px, light and dark.
 5. Keyboard-only pass through Studio, filters, a deal, and advance stage.
-6. `npm run build` succeeds; deployed URL loads behind the password.
+6. `npm run build` succeeds; the deployed URL loads and deep links work.
 
 ## 16. Deployment
 
 - GitHub is the source. Vercel builds with `npm run build`, output `dist/`.
-- Training use only; password protection on; no client or employer data.
+- Training use only; no client or employer data. The site is public (password protection was considered and dropped by the owner).
 - SPA fallback rewrite to `index.html` so deep links work.
 
 ## 17. Architecture decisions

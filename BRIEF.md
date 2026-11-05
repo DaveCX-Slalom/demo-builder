@@ -114,7 +114,7 @@ A fictional dataset in `src/data/metrics.json`, with the default Studio configur
 - Shared state through a Vue composable and `localStorage`. No Pinia, test runner, or linter at first.
 - A widget registry maps widget types to components; the dashboard renders whatever the config lists.
 - Charts built from small SVG and CSS components. No chart library.
-- Deployed to Vercel for training only, password protected. No backend, no real authentication.
+- Deployed to Vercel for training only. No backend, no real authentication. Password protection was considered and dropped by the owner: the site holds only invented data.
 
 ## 10. Interactions
 
@@ -165,7 +165,7 @@ Phases 1 and 2 together are the submission. Phase 3 is also built, so the Start 
 ## 14. Constraints
 
 - Fictional data only. No client or employer names, logos, or information.
-- Vercel is used for learning only; the site is password protected.
+- Vercel is used for learning only. The site is public by owner decision; all data is invented.
 - Responsive web app, not native.
 
 ## 15. How this meets the review

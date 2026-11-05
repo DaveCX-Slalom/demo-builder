@@ -4,9 +4,61 @@ A no-code builder for operational dashboards. An analyst says who the dashboard 
 
 The reference build is a **commercial banking pipeline dashboard** for Harborview Community Bank: *are we on pace to hit this quarter's funding target, and what is blocking the deals that will get us there?*
 
+**Live site:** https://demo-builder-xi.vercel.app/ · **Repo:** https://github.com/DaveCX-Slalom/demo-builder
+
 > Training case study P301. All names, companies and numbers are invented. No real client or employer information is used.
 
 ![Dashboard](docs/screenshots/dashboard.png)
+
+## For reviewers
+
+### Try it in three minutes
+
+1. **Open the site.** The Start screen offers the Commercial Banking template or a blank workspace. Choose **Commercial Banking**.
+2. **Read it as the director (`/dashboard`).** In the first screen you can see $40.5M open pipeline, $9.14M funded, a 99% forecast against target, and **4 stalled deals**. Needs attention sits under the KPIs, with problems before charts.
+3. **Act on a deal.** Open *Granite Mixed-Use Development* (the largest stalled deal, $8.2M), then press **Advance stage**. Go back and the stalled count is 3. Use **View as** in the header to become Tom Brandt, the relationship manager, who sees only his own deals.
+4. **Build it (`/studio`).** Change the brand colour, turn a widget off, drag a stage's days allowed down, or edit a deal's amount. The live preview beside the panels changes at once, and the full dashboard follows with no publish step.
+5. **Present it.** Add a few steps in the Walkthrough panel, then press **Present** in the header. Arrow keys move, Esc exits.
+
+Everything survives a reload. **Share and reset** in Studio exports and imports the whole workspace as JSON and restores the sample.
+
+### What was built
+
+| Phase | Scope | Status |
+|---|---|---|
+| 1. Dashboard from config | Config-driven dashboard, filters, deal detail, advance stage, persona switch, responsive, empty states | Built (required) |
+| 2. Studio | Audience, brand, stages and thresholds, widgets, data editor, import and export, live preview | Built (required) |
+| 3. Start and Present | Start screen with templates, walkthrough builder, Present mode | Built (optional) |
+| 4. AI-assisted setup | Generate a first configuration from a description | Design only, as the BRIEF specifies |
+
+All 18 user stories (US-1 to US-18), their acceptance criteria, and all functional requirements except the P3 print summary (FR-14) are met. The full table, with what was checked and how, is in **[docs/COVERAGE.md](docs/COVERAGE.md)**.
+
+### Where each review area is covered
+
+| Review area | Where to look |
+|---|---|
+| Does it work? | The build and read flows above; [COVERAGE](docs/COVERAGE.md) for the acceptance results |
+| Is the repo set up right? | This README, [LICENSE](LICENSE), [BRIEF](BRIEF.md), [PRD](docs/PRD.md), [SDD](docs/SDD.md), [CLAUDE.md](CLAUDE.md), [.github/copilot-instructions.md](.github/copilot-instructions.md), [docs/context/](docs/context/) (progress, decisions, glossary) |
+| Does it look right and show thinking? | The design decisions in BRIEF section 5, matching what is built, and the choices below |
+
+### Decisions worth knowing
+
+- **The dashboard is configuration, not code.** `DashboardCanvas` renders whatever `config.widgets` lists, through a widget registry. Adding a widget is one registry entry plus one component. The Studio preview and the full dashboard are the same component.
+- **Nothing computed is stored.** Every KPI, status and rollup is derived from raw data by pure functions in `src/lib/derive.ts`, so any edit flows everywhere. The forecast is funded to date plus probability-weighted open deals expected to close this quarter.
+- **One shared store.** Studio and Dashboard read the same `useWorkspace` store, so there is no publish step. No Pinia, no chart library, no test runner, as the BRIEF asks.
+- **Status is never colour alone.** Every status has an icon, a label and a colour. Teal and amber from the first palette failed 4.5:1 text contrast, so the palette was adjusted rather than the rule bent.
+- **Layout follows the widget, not the window.** Container queries mean the narrow Studio preview reflows correctly at any screen size.
+- **Look and feel.** Visually inspired by the Salesforce Lightning Design System: a light global header, flat bordered cards, 4px radius and a chevron Path for deal stages. It uses no Salesforce logo, name or assets.
+- **Invalid input never reaches the dashboard.** Studio fields keep a local draft and show the rule message, and a deal row saves only when valid.
+
+More in [docs/context/decisions.md](docs/context/decisions.md).
+
+### Deviations and limits, stated plainly
+
+- **No password protection.** The BRIEF and SDD asked for a password-protected Vercel site. The owner chose to keep it public, since every name and number is invented. The site stores data only in the visitor's browser, with no backend and no sign-in.
+- **Not built:** the print-friendly summary (FR-14, priority P3), AI-assisted setup (Phase 4, design only), and the BRIEF nice-to-haves (a second template, saved views, undo for stage changes).
+- **Keyboard testing is automated.** A scripted keyboard-only run passes (open a deal, advance it, open Studio panels, visible focus on every stop). A human keyboard-only pass has not been done.
+- **The test scripts are not in the repo,** because the project rules exclude a test runner. The method and totals are in [docs/COVERAGE.md](docs/COVERAGE.md).
 
 ## Three ways in
 
@@ -18,7 +70,7 @@ The reference build is a **commercial banking pipeline dashboard** for Harborvie
 
 ![Studio](docs/screenshots/studio.png)
 
-**Read (director or relationship manager, `/dashboard`):** read the KPI strip, see what needs attention, open a deal, advance it, and watch the dashboard update. Use **View as** in the header to switch between the Director (all regions) and the RM (own deals only).
+**Read (director or relationship manager, `/dashboard`):** read the KPI strip, see what needs attention, open a deal, advance it, and watch the dashboard update.
 
 ![Deal detail](docs/screenshots/deal.png)
 
@@ -38,8 +90,6 @@ The reference build is a **commercial banking pipeline dashboard** for Harborvie
 
 ![Present mode](docs/screenshots/present.png)
 
-Everything on the dashboard is **derived from the data**, and the dashboard itself is **rendered from the configuration** through a widget registry. Nothing is hard-coded, so anything you see can be changed in Studio.
-
 ## Run it
 
 ```bash
@@ -49,7 +99,7 @@ npm run build     # type-check + production build into dist/
 npm run preview   # serve the production build
 ```
 
-State lives in the browser (`localStorage`). There is no backend and no sign-in. **Reset to sample** in Studio restores the defaults.
+State lives in the browser (`localStorage`). There is no backend and no sign-in.
 
 ## Stack
 
@@ -60,11 +110,12 @@ Vue 3 (`<script setup>`), Vite, TypeScript, Vue Router, Vuetify 3. Charts are sm
 - [BRIEF](BRIEF.md): design intent and scope
 - [PRD](docs/PRD.md): requirements and acceptance criteria
 - [SDD](docs/SDD.md): software design
+- [Coverage](docs/COVERAGE.md): every requirement and how it was checked
 - [Context](docs/context/): progress, decisions, glossary
 
 ## Quality
 
-Checked in Chrome against the acceptance criteria for Phases 1 to 3: browser-driven flows for building and reading, no horizontal scroll from 360 to 1920 px, light and dark themes, and an automated WCAG 2.1 AA scan with no violations.
+Checked in Chrome against the production build, locally and on the live site: 73 acceptance checks (one per criterion) with no failures, no horizontal scroll from 360 to 1920 px, light and dark themes, and an automated WCAG 2.1 AA scan with no violations. First load is about 200 KB and interactive in under a second.
 
 | Phone dashboard | Phone Studio | Dark mode |
 |---|---|---|
@@ -72,4 +123,4 @@ Checked in Chrome against the acceptance criteria for Phases 1 to 3: browser-dri
 
 ## Deploying
 
-Vercel builds with `npm run build` and serves `dist/`. [vercel.json](vercel.json) rewrites every path to `index.html` so deep links such as `/deals/D-1010` work. This site is for training only: turn on password protection in the Vercel project settings.
+Vercel builds with `npm run build` and serves `dist/`. [vercel.json](vercel.json) rewrites every path to `index.html` so deep links such as `/deals/D-1010` work.
