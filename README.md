@@ -38,7 +38,7 @@ All 18 user stories (US-1 to US-18), their acceptance criteria, and all function
 | Review area | What to look for | Where |
 |---|---|---|
 | Does it work? | Site live; core flows end to end; build matches the BRIEF | https://demo-builder-xi.vercel.app/ and the tour above. Acceptance results in [COVERAGE](docs/COVERAGE.md). Empty states, bad input, corrupt storage and 360 to 1920 px are covered too |
-| Is the repo set up right? | AI scaffolding, README and LICENSE in the root, sensible structure, real history | [CLAUDE.md](CLAUDE.md), [.github/copilot-instructions.md](.github/copilot-instructions.md), [BRIEF](BRIEF.md), [PRD](docs/PRD.md), [SDD](docs/SDD.md) and [docs/context/](docs/context/) (progress, decisions and glossary, updated after each step). [LICENSE](LICENSE) is MIT. `git log` shows one descriptive commit per phase |
+| Is the repo set up right? | AI scaffolding, README and LICENSE in the root, sensible structure, real history | [CLAUDE.md](CLAUDE.md), [.claude/](.claude/) (settings and an `/update-progress` command), [.github/copilot-instructions.md](.github/copilot-instructions.md), [BRIEF](BRIEF.md), [PRD](docs/PRD.md), [SDD](docs/SDD.md) and [docs/context/](docs/context/) (progress, decisions and glossary, updated after each step). [LICENSE](LICENSE) is MIT. `git log` shows one descriptive commit per phase |
 | Does it look right and show thinking? | Design fits the industry and user; the BRIEF reads like a plan | BRIEF section 5 (design decisions) and section 11 (tokens), matching what is built. The design is built for a regional director in commercial banking, who sees problems before charts |
 
 ### Decisions worth knowing
