@@ -35,11 +35,11 @@ All 18 user stories (US-1 to US-18), their acceptance criteria, and all function
 
 ### Where each review area is covered
 
-| Review area | Where to look |
-|---|---|
-| Does it work? | The build and read flows above; [COVERAGE](docs/COVERAGE.md) for the acceptance results |
-| Is the repo set up right? | This README, [LICENSE](LICENSE), [BRIEF](BRIEF.md), [PRD](docs/PRD.md), [SDD](docs/SDD.md), [CLAUDE.md](CLAUDE.md), [.github/copilot-instructions.md](.github/copilot-instructions.md), [docs/context/](docs/context/) (progress, decisions, glossary) |
-| Does it look right and show thinking? | The design decisions in BRIEF section 5, matching what is built, and the choices below |
+| Review area | What to look for | Where |
+|---|---|---|
+| Does it work? | Site live; core flows end to end; build matches the BRIEF | https://demo-builder-xi.vercel.app/ and the tour above. Acceptance results in [COVERAGE](docs/COVERAGE.md). Empty states, bad input, corrupt storage and 360 to 1920 px are covered too |
+| Is the repo set up right? | AI scaffolding, README and LICENSE in the root, sensible structure, real history | [CLAUDE.md](CLAUDE.md), [.github/copilot-instructions.md](.github/copilot-instructions.md), [BRIEF](BRIEF.md), [PRD](docs/PRD.md), [SDD](docs/SDD.md) and [docs/context/](docs/context/) (progress, decisions and glossary, updated after each step). [LICENSE](LICENSE) is MIT. `git log` shows one descriptive commit per phase |
+| Does it look right and show thinking? | Design fits the industry and user; the BRIEF reads like a plan | BRIEF section 5 (design decisions) and section 11 (tokens), matching what is built. The design is built for a regional director in commercial banking, who sees problems before charts |
 
 ### Decisions worth knowing
 
@@ -55,7 +55,7 @@ More in [docs/context/decisions.md](docs/context/decisions.md).
 
 ### Deviations and limits, stated plainly
 
-- **No password protection.** The BRIEF and SDD asked for a password-protected Vercel site. The owner chose to keep it public, since every name and number is invented. The site stores data only in the visitor's browser, with no backend and no sign-in.
+- **No password protection.** The BRIEF and SDD planned a password-protected Vercel site, and the case study instructions recommend one. The owner chose to keep it public, since every name and number is invented. The site stores data only in the visitor's browser, with no backend and no sign-in.
 - **Not built:** the print-friendly summary (FR-14, priority P3), AI-assisted setup (Phase 4, design only), and the BRIEF nice-to-haves (a second template, saved views, undo for stage changes).
 - **Keyboard testing is automated.** A scripted keyboard-only run passes (open a deal, advance it, open Studio panels, visible focus on every stop). A human keyboard-only pass has not been done.
 - **The test scripts are not in the repo,** because the project rules exclude a test runner. The method and totals are in [docs/COVERAGE.md](docs/COVERAGE.md).

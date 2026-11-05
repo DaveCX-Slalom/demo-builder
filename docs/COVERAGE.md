@@ -82,3 +82,21 @@ How each requirement in the [PRD](PRD.md), [SDD](SDD.md) and [BRIEF](../BRIEF.md
 - **Phase 4, AI-assisted setup:** design only, as the BRIEF specifies.
 - **FR-14 print summary and the BRIEF nice-to-haves:** a second template, saved views, undo for stage changes.
 - **Password protection:** the BRIEF and SDD asked for it. The owner chose to keep the site public because all data is invented. The docs now say so.
+
+## Case study review criteria (P301)
+
+| Dimension | Criterion | Met |
+|---|---|---|
+| Does it work? | Site is live and accessible | Yes, https://demo-builder-xi.vercel.app/ |
+| | Core flows work end to end (build flow and read flow, BRIEF section 3) | Yes, see above |
+| | Build reflects the industry and user in the BRIEF | Yes: commercial banking, Regional Director and RM, a funding-pace question |
+| | Go further: edge cases, empty states, screen sizes | Yes: no-result filters, no exceptions, all widgets off, long names, corrupt or blocked storage, 360 to 1920 px |
+| | Recommended: password protection | **No**, owner decision; data is invented |
+| Repo set up right? | AI scaffolding organized | `CLAUDE.md`, `.github/copilot-instructions.md`, `BRIEF.md`, `docs/context/` |
+| | README and LICENSE in the root | Yes |
+| | Sensible folder structure | `src/` by role, `docs/` for specs and context |
+| | Progress over time, descriptive commits | Six commits, one per step, each with a descriptive message |
+| | Go further: context docs updated repeatedly; BRIEF matches build | `progress.md` updated after each step; the BRIEF was updated when scope and design changed |
+| Looks right, shows thinking? | Design fits the industry | Lightning-inspired, data-forward, status by icon + label + colour |
+| | First-time user can orient without help | Start screen with two clear choices, labelled panels, questions on every widget |
+| | BRIEF is a plan connected to the build | BRIEF sections 4, 5 and 10 map directly to widgets, screens and interactions |
